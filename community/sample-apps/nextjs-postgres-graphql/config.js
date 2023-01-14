@@ -1,3 +1,5 @@
+// configure withData with an httpLink to connect to a valid GraphQL server URL.
+
 import { withData } from 'next-apollo'
 import { HttpLink } from 'apollo-link-http'
 

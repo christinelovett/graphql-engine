@@ -2,18 +2,20 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import withData from '../config';
 
-import AuthorList from './AuthorList';
+import PhysicianList from './PhysicianList';
+
+// Wrap your page component with Query component from react-apollo so that appropriate data can be fetched while the page is SSRed (server-side rendoring; dynamic rendoring)
 
 const query = gql`
 	query {
-	  author {
+	  physician {
 	    id
 	    name
 	  }
 	}
 `
-
-const Index = ({ authors } ) => {
+// Wrap your component with Query
+const Index = ({ physicians } ) => {
   return (
     <Query    // <- Wrapping the main component with Query component from react-apollo
       query={ query }
@@ -25,8 +27,8 @@ const Index = ({ authors } ) => {
         }
         return (
           <div>
-            <h1>My Authors </h1>
-            <AuthorList authors={data ? data.author: []} />
+            <h1>My physicians </h1>
+            <PhysicianList physicians={data ? data.physician: []} />
           </div>
         );
       }}
